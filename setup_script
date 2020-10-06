@@ -1,0 +1,27 @@
+!/bin/bash
+
+echo "Allocating a 3GB SWAP file"
+sudo fallocate -l 3G /swapfile
+echo "Writing out the 3G swapfile"
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=3145728
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+echo "enabling /swapfile"
+sudo swapon /swapfile
+echo "appending /swapfile as a swapfile in fstab"
+echo "/swapfile swap swap defaults 0 0" | sudo tee -a /etc/fstab
+sudo swapon --show
+
+echo "Updating APT Sources"
+sudo apt update 
+echo "Updating Debian 10"
+sudo apt upgrade -y
+
+echo "Installing everything required for a Statamic 3 installation"
+sudo apt install apache2 composer php7.3 libapache2-mod-php7.3 php-{bcmath,bz2,cgi,cli,fpm,gd,json,mbstring,xml,zip,imagick,pdo} -y
+
+echo "Establishing a Statamic3 installation"
+echo ""
+echo "(there maybe a delay...)"
+composer create-project --prefer-dist statamic/statamic statamic3
+
