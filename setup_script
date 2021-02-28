@@ -20,6 +20,9 @@ sudo apt upgrade -y
 echo "Installing everything required for a Statamic 3 installation"
 sudo apt install apache2 composer php7.3 libapache2-mod-php7.3 php-{bcmath,bz2,cgi,cli,fpm,gd,json,mbstring,xml,zip,imagick,pdo} -y
 
+sudo a2enmod rewrite
+sudo service apache2 restart
+
 echo "Establishing a Statamic3 installation"
 echo ""
 echo "(there maybe a delay...)"
