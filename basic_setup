@@ -1,0 +1,18 @@
+!/bin/bash
+
+echo "Allocating a 3GB SWAP file"
+sudo fallocate -l 3G /swapfile
+echo "Writing out the 3G swapfile"
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=3145728
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+echo "enabling /swapfile"
+sudo swapon /swapfile
+echo "appending /swapfile as a swapfile in fstab"
+echo "/swapfile swap swap defaults 0 0" | sudo tee -a /etc/fstab
+sudo swapon --show
+
+echo "Updating APT Sources"
+sudo apt update 
+echo "Updating Debian 10"
+sudo apt upgrade -y
