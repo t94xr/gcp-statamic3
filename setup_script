@@ -12,19 +12,27 @@ echo "appending /swapfile as a swapfile in fstab"
 echo "/swapfile swap swap defaults 0 0" | sudo tee -a /etc/fstab
 sudo swapon --show
 
+sleep 5
+
 echo "Updating APT Sources"
 sudo apt update 
 echo "Updating Debian 10"
 sudo apt upgrade -y
 
+sleep 5 
+
 echo "Installing everything required for a Statamic 3 installation"
-sudo apt install apache2 composer php7.3 libapache2-mod-php7.3 php-{bcmath,bz2,cgi,cli,fpm,gd,json,mbstring,xml,zip,imagick,pdo} -y
+sudo apt install apache2 php7.3 libapache2-mod-php7.3 php-{bcmath,curl,bz2,cgi,cli,fpm,gd,json,mbstring,xml,zip,imagick,pdo} -y
 
 sudo a2enmod rewrite
 sudo service apache2 restart
 
+wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
+
 echo "Establishing a Statamic3 installation"
 echo ""
 echo "(there maybe a delay...)"
-composer create-project --prefer-dist statamic/statamic statamic3
+echo "type this cmd in"
+echo "replace $stat-folder with your preferred folder name for Statamic3"
+echo "composer create-project --prefer-dist statamic/statamic $stat-folder" 
 
