@@ -1,5 +1,3 @@
-!/bin/bash
-
 echo "Allocating a 3GB SWAP file"
 sudo fallocate -l 3G /swapfile
 echo "Writing out the 3G swapfile"
