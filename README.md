@@ -1,4 +1,4 @@
-# gcp-statamic3
+# Google Cloud Platform - Statamic v3
 Installation Script for Statamic3 on GCP
 
 When you create a VM instance, run this script - before updating, it creates a 3GB swapfile, sets it up, mounts it and then updates debian 10 repos and upgrades it.
