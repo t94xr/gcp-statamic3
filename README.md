@@ -8,6 +8,6 @@ When you create a VM instance, run this script - before updating, it creates a 3
  curl -fsSL http://raw.githubusercontent.com/t94xr/gcp-statamic3/main/basic_setup | sh
  ```
  ```bash
- curl -fsSL http://raw.githubusercontent.com/t94xr/gcp-statamic3/main/setup_script | sh
+ curl -fsSL http://raw.githubusercontent.com/t94xr/gcp-statamic3/main/gcp_statamic3_setup | sh
  ```
  
