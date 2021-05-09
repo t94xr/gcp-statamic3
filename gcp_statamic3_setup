@@ -12,7 +12,7 @@ sudo swapon --show
 sudo apt update 
 sudo apt upgrade -y
 sudo apt install wget unzip -y
-sudo apt install apache2 php7.3 libapache2-mod-php7.3 php-{bcmath,curl,bz2,cgi,cli,fpm,gd,json,mbstring,xml,zip,imagick,pdo} -y
+sudo apt install apache2 php7.3 libapache2-mod-php7.3 php-bcmath php-curl php-bz2 php-cgi php-cli php-fpm php-gd php-json php-mbstring php-xml php-zip php-imagick php-pdo -y
 sudo a2enmod proxy_fcgi setenvif
 sudo a2enconf php7.3-fpm
 sudo a2enmod rewrite
