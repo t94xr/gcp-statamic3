@@ -37,6 +37,9 @@ php -r "unlink('composer-setup.php');"
 
 sudo mv composer.phar /usr/local/bin/composer
 
+wget -c https://raw.githubusercontent.com/t94xr/gcp-statamic3/main/bash_profile
+mv bash_profile .bash_profile
+
 echo "Establishing a Statamic3 installation"
 echo ""
 echo "(there maybe a delay...)"
